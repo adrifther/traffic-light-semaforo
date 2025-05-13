@@ -5,34 +5,11 @@ import '../../styles/redLight.css';
 
 const RedLight = ({ active }) => {
 
-    const [isSwitchedOn, setIsSwitchedOn] = useState(false);
+    const redLightClass = active ? 'redLightOn' : 'redLightOff';
 
-    useEffect (() => {
-        let timeout;
-
-            if (active) {
-                setIsSwitchedOn(true);
-                timeout = setTimeout(() => {
-                    setIsSwitchedOn(false);
-                }, 4000);
-            }
-            else {
-                setIsSwitchedOn(false);
-            }
-            return () => clearTimeout(timeout);
-        }
-        , [active]);
-    
-    
-        const redLightClass = isSwitchedOn ? 'redLightOn' : 'redLightOff';
-    
-        return (
-            <div className={redLightClass}></div>
-        )
-}
-
-RedLight.propTypes = {
-    active: PropTypes.bool.isRequired,
+    return (
+        <div className={redLightClass}></div>
+    )
 }
 
 export default RedLight;

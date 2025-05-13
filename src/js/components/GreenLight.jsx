@@ -6,31 +6,12 @@ import '../../styles/index.css';
 
 const GreenLight = ({active}) => {
 
-        const [isSwitchedOn, setIsSwitchedOn] = useState(false);
-         
-        useEffect(() => {
-            let timeout;
+    const greenLightClass = active ? 'greenLightOn' : 'greenLightOff';
 
-            if (active) {
-                setIsSwitchedOn(true);
-                timeout = setTimeout (() => setIsSwitchedOn(false), 4000); 
-            } else {
-                setIsSwitchedOn(false);
-            }
-        return () => clearTimeout(timeout);
-
-        }, [active]);
+    return (
+        <div className={greenLightClass}></div>
+    )
     
-        const greenLightClass = isSwitchedOn ? 'greenLightOn' : 'greenLightOff';
-    
-        return (
-            <div className={greenLightClass}></div>
-        )
-    
-}
-
-GreenLight.propTypes = {
-    active: PropTypes.bool.isRequired,
 }
 
 export default GreenLight;
